@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Architect Theme Webpage</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        nav { background-color: #333; color: #fff; padding: 1rem; position: fixed; width: 100%; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+        nav .nav-links { display: flex; gap: 1rem; }
+        nav a { color: #fff; text-decoration: none; transition: color 0.3s; }
+        nav a:hover { color: #ddd; }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+        section { padding: 100px 20px; min-height: 100vh; }
+        #section1 { background-color: #f4f4f4; }
+        #section2 { background-color: #eaeaea; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; background-color: #444; position: absolute; top: 60px; right: 0; width: 100%; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Architect Theme</div>
+        <div class="menu-toggle">☰</div>
+        <div class="nav-links">
+            <a href="#section1">Section 1</a>
+            <a href="#section2">Section 2</a>
+        </div>
+    </nav>
+
+    <section id="section1">
+        <h1>Modern Architecture</h1>
+        <p>Explore the latest trends and innovations in modern architecture.</p>
+    </section>
+
+    <section id="section2">
+        <h1>Architectural Heritage</h1>
+        <p>Discover historical architectural marvels from around the world.</p>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navigation toggle for mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
